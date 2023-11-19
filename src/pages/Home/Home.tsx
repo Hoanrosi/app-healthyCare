@@ -20,12 +20,16 @@ import icon_heart from "../../components/image/icon-heart.png";
 import Donut from "../../components/DoughnutChart/DoughnutChart";
 import EcgChart from "../../components/EcgChart/EcgChart";
 import Calendar from "../../components/Calendar/Calendar";
+import MapContainer from "../../components/GoogleMap/GooleMap";
 import Logout from "../../features/Logout/Logout";
 import getData from "../../api/getData";
 import "./home.scss";
 
 const Home: React.FC = () => {
   const [healthData, setHealthData] = useState<any>();
+  const latitude = 20.9990537;
+  const longitude = 105.7334219;
+
   // const fetchData = async () => {
   const fetchData = async () => {
     try {
@@ -37,10 +41,11 @@ const Home: React.FC = () => {
       console.error("Error fetching data:", error);
     }
   };
+
   useEffect(() => {
     console.log("useEffectt call");
     fetchData();
-  });
+  }, []);
 
   console.log("healthData:>>", healthData);
 
@@ -97,7 +102,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="survival-index-param">
-                  {healthData.valueHeartBeat}
+                  {healthData && healthData.valueHeartBeat !== undefined ? healthData.valueHeartBeat : "_"}
                   <span className="survival-index-unit">bpm</span>
                 </div>
                 <div className="survival-index-status heart-beat">Normal</div>
@@ -111,7 +116,7 @@ const Home: React.FC = () => {
                   <path
                     d="M36.5268 31.7124C22.6163 29.5678 13.3533 31.143 1 37.7541V71.5H174V1C163.142 5.71892 157.566 9.70855 146.196 13.0836C127.836 18.5336 113.978 8.36761 97.2827 17.6149C82.7445 25.6674 86.5382 47.5518 69.994 49.8377C55.2005 51.8817 51.2849 33.9876 36.5268 31.7124Z"
                     fill="url(#paint0_linear_1_675)"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <path
                     d="M1 37.7541C13.3533 31.143 22.6163 29.5678 36.5268 31.7124C51.2849 33.9876 55.2005 51.8817 69.9941 49.8377C86.5382 47.5518 82.7445 25.6674 97.2827 17.6149C113.978 8.36761 127.836 18.5336 146.196 13.0836C157.566 9.70855 163.142 5.71892 174 1"
@@ -126,8 +131,8 @@ const Home: React.FC = () => {
                       y2="68"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#DA8184" />
-                      <stop offset="1" stop-color="#CA6B6E" stop-opacity="0" />
+                      <stop stopColor="#DA8184" />
+                      <stop offset="1" stopColor="#CA6B6E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -140,7 +145,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="survival-index-param">
-                  {/* {healthData.valueOxygenBoold}{" "} */}
+                  {healthData && healthData.valueOxygenBoold !== undefined ? healthData.valueOxygenBoold: "_"}{" "}
                   <span className="survival-index-unit">%</span>
                 </div>
                 <div className="survival-index-status oxy-blood">Normal</div>
@@ -154,7 +159,7 @@ const Home: React.FC = () => {
                   <path
                     d="M36.5268 31.7124C22.6163 29.5678 13.3533 31.143 1 37.7541V71.5H174V1C163.142 5.71892 157.566 9.70855 146.196 13.0836C127.836 18.5336 113.978 8.36761 97.2827 17.6149C82.7445 25.6674 86.5382 47.5518 69.994 49.8377C55.2005 51.8817 51.2849 33.9876 36.5268 31.7124Z"
                     fill="url(#paint0_linear_1_675)"
-                    fill-opacity="0.4"
+                    fillOpacity="0.4"
                   />
                   <path
                     d="M1 37.7541C13.3533 31.143 22.6163 29.5678 36.5268 31.7124C51.2849 33.9876 55.2005 51.8817 69.9941 49.8377C86.5382 47.5518 82.7445 25.6674 97.2827 17.6149C113.978 8.36761 127.836 18.5336 146.196 13.0836C157.566 9.70855 163.142 5.71892 174 1"
@@ -169,8 +174,8 @@ const Home: React.FC = () => {
                       y2="68"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#DA8184" />
-                      <stop offset="1" stop-color="#CA6B6E" stop-opacity="0" />
+                      <stop stopColor="#DA8184" />
+                      <stop offset="1" stopColor="#CA6B6E" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -183,7 +188,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="survival-index-param">
-                  {/* {healthData.valueTemperature} */}
+                  {healthData && healthData.valueTemperature != undefined ? healthData.valueTemperature : "_"}
                   <span className="survival-index-unit">°C</span>
                 </div>
                 <div className="survival-index-status temperature">Normal</div>
@@ -201,7 +206,7 @@ const Home: React.FC = () => {
                   <path
                     d="M1 51.2276C1 51.2276 20.8911 32.8764 37.1969 31.2276C50.1325 29.9196 56.7036 39.2569 69.6677 38.2276C93.8029 36.3114 93.647 -2.29971 117.575 1.22759C135.591 3.88336 133.463 29.8816 151.643 31.2276C160.59 31.89 174 26.2276 174 26.2276"
                     stroke="#F3A53F"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                   />
                   <defs>
                     <linearGradient
@@ -212,8 +217,8 @@ const Home: React.FC = () => {
                       y2="73.5"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#F8DEBD" />
-                      <stop offset="1" stop-color="#FBEBD6" stop-opacity="0" />
+                      <stop stopColor="#F8DEBD" />
+                      <stop offset="1" stopColor="#FBEBD6" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -226,7 +231,7 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="survival-index-param">
-                  {/* {healthData.valueAirQuality}{" "} */}
+                  {healthData && healthData.valueAirQuality != undefined ? healthData.valueAirQuality : "_"}{" "}
                   <span className="survival-index-unit"></span>
                 </div>
                 <div className="survival-index-status air-quality"> Good</div>
@@ -254,8 +259,8 @@ const Home: React.FC = () => {
                       y2="72.8394"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#D0FBFF" />
-                      <stop offset="1" stop-color="#DDF2F4" stop-opacity="0" />
+                      <stop stopColor="#D0FBFF" />
+                      <stop offset="1" stopColor="#DDF2F4" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -324,6 +329,9 @@ const Home: React.FC = () => {
             <div className="home-content-overall-health">
               <div className="heading">Overall Health</div>
               <div className="analysis health">2% greater than last weak</div>
+            </div>
+            <div>
+              <MapContainer latitude={latitude} longitude={longitude} />
             </div>
           </div>
         </div>
