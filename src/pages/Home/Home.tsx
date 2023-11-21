@@ -21,6 +21,8 @@ import Donut from "../../components/DoughnutChart/DoughnutChart";
 import EcgChart from "../../components/EcgChart/EcgChart";
 import Calendar from "../../components/Calendar/Calendar";
 import Logout from "../../features/Logout/Logout";
+import SimpleMap from "../../components/GoogleMap/GooleMap";
+import GooleMap from "../../components/GoogleMap/GooleMap";
 import getData from "../../api/getData";
 import "./home.scss";
 
@@ -40,7 +42,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     console.log("useEffectt call");
     fetchData();
-  });
+  }, []);
 
   console.log("healthData:>>", healthData);
 
@@ -65,7 +67,7 @@ const Home: React.FC = () => {
             <Link to="">
               <img src={icon_map} className="icon-sidebar" />
             </Link>
-            <Link to="">
+            <Link to="/profile">
               <img src={icon_profile} className="icon-sidebar" />
             </Link>
             <Logout />
@@ -97,7 +99,10 @@ const Home: React.FC = () => {
                   </div>
                 </div>
                 <div className="survival-index-param">
-                  {healthData.valueHeartBeat}
+                  {/* {healthData.valueHeartBeat} */}
+                  {healthData && healthData.valueHeartBeat !== undefined
+                    ? healthData.valueHeartBeat
+                    : "_"}
                   <span className="survival-index-unit">bpm</span>
                 </div>
                 <div className="survival-index-status heart-beat">Normal</div>
@@ -141,6 +146,9 @@ const Home: React.FC = () => {
                 </div>
                 <div className="survival-index-param">
                   {/* {healthData.valueOxygenBoold}{" "} */}
+                  {healthData && healthData.valueOxygenBoold !== undefined
+                    ? healthData.valueOxygenBoold
+                    : "_"}{" "}
                   <span className="survival-index-unit">%</span>
                 </div>
                 <div className="survival-index-status oxy-blood">Normal</div>
@@ -184,6 +192,9 @@ const Home: React.FC = () => {
                 </div>
                 <div className="survival-index-param">
                   {/* {healthData.valueTemperature} */}
+                  {healthData && healthData.valueTemperature != undefined
+                    ? healthData.valueTemperature
+                    : "_"}
                   <span className="survival-index-unit">°C</span>
                 </div>
                 <div className="survival-index-status temperature">Normal</div>
@@ -227,6 +238,9 @@ const Home: React.FC = () => {
                 </div>
                 <div className="survival-index-param">
                   {/* {healthData.valueAirQuality}{" "} */}
+                  {healthData && healthData.valueAirQuality != undefined
+                    ? healthData.valueAirQuality
+                    : "_"}{" "}
                   <span className="survival-index-unit"></span>
                 </div>
                 <div className="survival-index-status air-quality"> Good</div>
@@ -324,6 +338,9 @@ const Home: React.FC = () => {
             <div className="home-content-overall-health">
               <div className="heading">Overall Health</div>
               <div className="analysis health">2% greater than last weak</div>
+            </div>
+            <div>
+              <GooleMap/>
             </div>
           </div>
         </div>
