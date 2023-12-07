@@ -1,0 +1,26 @@
+.upload-file {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.ant-upload-wrapper.ant-upload-picture-card-wrapper{
+  width: 80%;
+}
+
+:where(.css-dev-only-do-not-override-zcfrx9).ant-input-number-group .ant-input-number-group-addon .ant-select.ant-select-single:not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector{
+  background-color: #d5dde9;
+}
+
+:where(.css-dev-only-do-not-override-zcfrx9).ant-select-single .ant-select-selector{
+  
+}
+.upload-file-header{
+  color: #384D6C;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: -20%;
+}

@@ -87,6 +87,107 @@
     align-items: center;
 }
 
+
+.home-content-survial-filter{
+    position: relative;
+}
+
+.warning-message{
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    bottom: -10px;
+    right: -20px;
+    color: #fff;
+}
+
+.Notifybutton{
+    background: rgb(0, 0, 0);
+    color: #fff;
+    font-size: 20px;
+    border: 2px solid rgb(60, 141, 110);
+    padding: 16px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.show-massage-warning{
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 4px 20px rgba(105, 105, 105, 0.1);
+    border-radius: 8px 0 0 8px;
+    width: 300px;
+    height: 400px;
+    top: 0;
+    right: -20px;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+.show-massage-warning-list{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.show-massage-warning-item{
+    padding:16px;
+    border-radius: 8px;
+    border: 1px solid #E4E4E4;
+    background: #FFF;
+    margin-top: 10px;
+
+/* shadow */
+box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.05);
+}
+.show-massage-warning-title{
+    display: flex;
+    align-items: center;
+
+    .title{
+        color:#141414;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-left: 12px;
+    }
+    .icon-close{
+        width: 20px;
+        height:20px;
+        margin-left: 36px;
+    }
+}
+
+.message-content{
+    margin-left: 42px;
+    color:#565656;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+}
+
+.image-icon{
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-color:  #FDCECE;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .home-content-survival-list-value{
     display: flex;
     margin-bottom: 30px;
@@ -129,11 +230,13 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    display: flex;
 }
 .survival-index-unit{
     color: #818181;
     font-size: 18px;
     font-weight: 500;
+    margin-left: 4px;
 }
 
 .survival-index-status{
@@ -281,6 +384,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    display: flex;
     .value{
     font-size: 14px;
     margin-left: 20px;
@@ -314,11 +418,18 @@
        font-size: 24px;
     }
     .status-health{
+
         border-radius: 8px;
         background: #D6FFDD;
         padding: 6px 10px;
         color: #000;
         font-size: 12px;
+        margin-left: 8px;
+        color: #272927;
+        font-family: Mulish;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
 
     }
 
@@ -369,6 +480,13 @@
     cursor: pointer;
   }
   
+}
+
+.home-map{
+    margin-top: 20px;
+    border-radius: 20px;
+    background: #fff;
+    
 }
 
 

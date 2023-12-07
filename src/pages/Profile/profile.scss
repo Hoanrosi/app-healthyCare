@@ -1,45 +1,187 @@
-
 .profile{
+    width: 100%;
+    background: #d9d8d8;
+    height: 100vh;
+    padding: 10px 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    .container{
-        width: 400px;
-        height: 600px;
-        border-radius: 32px;
-        background: var(--light-gray-0,  #f4ede2);
-        padding: 20px 0;
-    
-        
-    }
-    
-
+    align-items: center;
 }
 
 .profile-heading{
-    text-align: center;
-    color: var(--light-gray-11, #000);
-    font-family: Poppins;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 28px;
+    color: #6B3F02;
     margin-bottom: 20px;
 }
 
-.profile-list-infor{
-        margin-left: 10%;
+.profile-content{
+    display: flex;
 
 }
 
+.profile-left{
+    width: 30%;
+    height: 600px;
+    background-color: #fff;
+    box-shadow: 0px 4px 20px rgba(124, 123, 122, 0.1);
+    border-radius: 8px 0 0 8px;
+    padding: 20px 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.profile-left-header{
+    display: flex;
+    justify-content: center;}
+.profile-avatar{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-end;
+}
 
-.profile-input{
-        width: 90%;
-        height: 40px;
-        padding: 16px;
-        background-color: #F3F8FF;
-        outline: none;
-        border: 1px solid #9E9E9E;
+.proflie-name{
+    display: flex;
+    margin: 20px auto;
+    align-items: center;
+}
+.profile-name-value{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.profile-image{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.profile-icon-camera {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    right: -11px;
+    top: 30px;
+    height: 40px;
+  }
+
+.profile-name-icon{
+    margin-left: 10px ;
+    margin-top: -8px;
+}
+
+.profile-icon-camera-input{
+    display: none;
+}
+
+.profile-information-brief-item{
+    display: flex;
+    align-items: center;
+
+    .icon{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .profile-brief-item-heading{
+        font-weight: 400;
+        font-size: 16px;
+    }
+    
+}
+.profile-right{
+    width: 70%;
+    background: #f4eae2;
+    border-radius: 0 8px 8px 0;
+    padding: 20px 40px;
+
+}
+.profile-right-heading{
+    color: #384D6C;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.profile-right-form,.profile-right-form-name{
+   display:flex;
+   flex-direction: column;
+   margin-top: 20px;
+
+}
+
+.profile-right-form-name{
+    label{
+        color: #384D6C;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 16px;
+    }
+
+    input{
         border-radius: 8px;
-        margin-bottom: 20px;
+        border: 1px solid #D1D5DB;
+        padding: 8px;
+        background: #FFF;
+    }
+}
 
+.profile-right-form-info{
+    display: flex;
+}
+
+.profile-right-form-info-email{
+    label{
+        color: #384D6C;
+        margin-bottom: 16px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    
+    }}
+.input-suffix{
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 6px;
+    margin-right: 38px;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+
+    input{
+        border: none;
+        outline: none;
+    }
+}
+
+.profile-right-form-weight-height{
+    margin-top: 40px;
+}
+
+.btn{
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    color: #fff;
+    border: 3px solid  #384D6C;
+    background: var(--peak-primary, #384D6C);
+    margin-top: 20px;
+    font-size: 20px;
 }
