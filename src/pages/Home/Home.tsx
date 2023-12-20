@@ -35,6 +35,7 @@ import { ref, getDatabase } from "firebase/database";
 import { useObject } from "react-firebase-hooks/database";
 import firebaseApp from "../../firebase";
 import warning from "antd/es/_util/warning";
+import { he } from "@faker-js/faker";
 
 const database = getDatabase(firebaseApp);
 
@@ -60,6 +61,39 @@ const Home: React.FC = () => {
       console.error("Error fetching data:", error);
     }
   };
+
+  const sendEmail = async (subject: any, content: any) => {
+    const token = localStorage.getItem("authToken");
+    const response = await axios
+      .post("http://localhost:3000/sendmail", { subject, content },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    console.log('status send mail', response);
+  }
+  
+  const monitorHealthMetrics = (healthData: any) => {
+    if (healthData.valueHeartBeat < 60 || healthData.valueHeartBeat > 120) {
+      sendEmail("Heart Rate Alert", "Heart rate is outside the normal range.");
+    }
+
+    if (healthData.valueOxygenBlood < 93) {
+      sendEmail("Oxygen Level Alert", "Oxygen level is below the normal range.");
+    }
+
+    if (healthData.valueTemperature > 40) {
+      sendEmail("Temperature Alert", "Temperature is over the normal range.");
+    }
+
+    if (healthData.valueAirQuality > 3000) {
+      sendEmail("AirQuality Alert", "AirQuality pollution is over the normal range.");
+    }
+    // Add more conditions
+  };
+
+
   const handleWarningClick = () => {
     setShowWarning(!showWarning);
   };
@@ -99,6 +133,12 @@ const Home: React.FC = () => {
       ) {
         warnings += 1;
         messages.push("Cảnh báo!!! oxy trong máu trung bình");
+      }
+
+      // mail alert by all healData
+      if (snapshots){
+        console.log("send monitor health", healthData);
+        monitorHealthMetrics(snapshots.val());
       }
 
       setTotalWarning(warnings);
